@@ -1,6 +1,9 @@
 # Projeto Back-End 
 
 **Código da Disciplina**: IBM8936<br>
+- Fulano
+- Sicrano
+- Bletrano
 
 ## Sobre 
 Descreva o seu projeto em linhas gerais. 
