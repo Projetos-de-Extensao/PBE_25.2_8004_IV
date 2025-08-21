@@ -1,8 +1,8 @@
 # Projeto Back-End 
 
 **Código da Disciplina**: IBM8936<br>
-- Fulano
-- Sicrano
+- Antonio Sinhorelli Lima
+- Ricardo França da Silva
 - Bletrano
 
 ## Sobre 
