@@ -4,6 +4,7 @@
 - Antonio Sinhorelli Lima
 - Ricardo França da Silva
 - Bletrano
+- Arthur Silva Azeredo
 
 ## Sobre 
 Descreva o seu projeto em linhas gerais. 
