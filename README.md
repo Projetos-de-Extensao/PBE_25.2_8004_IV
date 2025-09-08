@@ -7,7 +7,7 @@
 - Arthur Silva Azeredo
 
 ## Sobre 
-Descreva o seu projeto em linhas gerais. 
+A aplicação "Monitoria" tem o objetivo fornecer... (5W2H) 
 
 ## Instalação 
 **Linguagens**: Python, Django<br>
