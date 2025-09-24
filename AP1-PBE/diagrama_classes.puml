@@ -1,0 +1,28 @@
+@startuml
+title Diagrama de Classes – TA/Monitoria (somente classes e relacionamentos)
+
+class Aluno
+class Professor
+class OrganizadorCASA
+class Disciplina
+class Vaga
+class Candidatura
+class Entrevista
+class Assinatura
+class Desempenho
+class Notificacao
+class Sistema
+
+Aluno "1" -- "0..*" Candidatura
+Disciplina "1" -- "0..*" Vaga
+Vaga "1" -- "0..*" Candidatura
+Professor "1" -- "0..*" Entrevista
+Candidatura "0..1" -- "0..*" Entrevista
+Aluno "1" -- "0..*" Assinatura
+Aluno "1" -- "0..*" Desempenho
+Disciplina "1" -- "0..*" Desempenho
+Sistema "1" .. "0..*" Notificacao
+OrganizadorCASA "1" .. "0..*" Entrevista : agenda >
+Professor "1" .. "0..*" Candidatura : aprova >
+
+@enduml

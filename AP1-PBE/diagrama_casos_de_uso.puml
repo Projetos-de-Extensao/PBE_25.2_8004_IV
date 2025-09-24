@@ -1,0 +1,31 @@
+@startuml
+title Diagrama de Casos de Uso – TA/Monitoria
+
+actor "Candidato (Aluno)" as Aluno
+actor Professor
+actor "Organizador (CASA)" as CASA
+actor Sistema
+
+usecase "UC01 Inscrever-se" as UC01
+usecase "UC02 Validar elegibilidade" as UC02
+usecase "UC03 Agendar entrevista" as UC03
+usecase "UC04 Notificar" as UC04
+usecase "UC05 Assinar termo" as UC05
+usecase "UC06 Aprovar/Reprovar" as UC06
+usecase "UC07 Acompanhar desempenho" as UC07
+usecase "UC08 Gerar relatórios" as UC08
+
+Aluno -- UC01
+Sistema -- UC02
+CASA -- UC03
+Professor -- UC03
+UC03 .> UC04 : <<include>>
+Aluno -- UC05
+Professor -- UC06
+UC06 .> UC04 : <<include>>
+CASA -- UC07
+Professor -- UC07
+CASA -- UC08
+Professor -- UC08
+
+@enduml

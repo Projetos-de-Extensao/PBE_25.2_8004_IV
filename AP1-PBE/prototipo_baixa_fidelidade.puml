@@ -1,0 +1,43 @@
+@startuml
+' Requer PlantUML + SALT
+salt
+{
+  {T
+    + Login
+    "Matrícula:" | [__________]
+    "Senha:"      | [__________]
+    [ Entrar ]
+  }
+  --
+  {T
+    + Dashboard (Aluno)
+    [Status: Elegível] [Ver Entrevista] [Assinar Termo]
+    [Minhas Candidaturas] [Sair]
+  }
+  --
+  {T
+    + Inscrição
+    "Nome:"            | [________________]
+    "Matrícula:"       | [__________]
+    "Curso/Período:"   | [__________]
+    "Disciplina:"      | [Selecionar v]
+    "CR Geral:"        | [__]
+    "CR Disciplina:"   | [__]
+    [ Enviar Inscrição ]
+  }
+  --
+  {T
+    + Agenda (CASA/Professor)
+    "Professor:" | [Selecionar v]    "Disponibilidade:" | [Definir v]
+    [Alocar Candidatos]  [Notificar]
+    [Voltar]
+  }
+  --
+  {T
+    + Relatórios (CASA)
+    "Período:" | [____/____]
+    "Disciplina:" | [Selecionar v]
+    [Gerar]  [Exportar CSV]  [Exportar PDF]
+  }
+}
+@enduml
