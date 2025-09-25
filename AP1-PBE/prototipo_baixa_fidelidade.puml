@@ -1,43 +1,73 @@
-@startuml
-' Requer PlantUML + SALT
-salt
+# 5. Protótipo de Baixa Fidelidade
+
+Estes wireframes, criados com PlantUML Salt, representam as telas e os fluxos principais da plataforma **Conecta Monitoria**, focando na disposição dos elementos e na navegação.
+
+---
+
+### 5.1. Tela de Login
+
+**Código PlantUML:**
+```plantuml
+@startsalt
 {
-  {T
-    + Login
-    "Matrícula:" | [__________]
-    "Senha:"      | [__________]
-    [ Entrar ]
-  }
-  --
-  {T
-    + Dashboard (Aluno)
-    [Status: Elegível] [Ver Entrevista] [Assinar Termo]
-    [Minhas Candidaturas] [Sair]
-  }
-  --
-  {T
-    + Inscrição
-    "Nome:"            | [________________]
-    "Matrícula:"       | [__________]
-    "Curso/Período:"   | [__________]
-    "Disciplina:"      | [Selecionar v]
-    "CR Geral:"        | [__]
-    "CR Disciplina:"   | [__]
-    [ Enviar Inscrição ]
-  }
-  --
-  {T
-    + Agenda (CASA/Professor)
-    "Professor:" | [Selecionar v]    "Disponibilidade:" | [Definir v]
-    [Alocar Candidatos]  [Notificar]
-    [Voltar]
-  }
-  --
-  {T
-    + Relatórios (CASA)
-    "Período:" | [____/____]
-    "Disciplina:" | [Selecionar v]
-    [Gerar]  [Exportar CSV]  [Exportar PDF]
+  .Janela "Conecta Monitoria - Acesso"
+  {
+    "Email ou Matrícula"
+    [                       ]
+    "Senha"
+    [                       ]
+    ( Entrar )
+    "Esqueceu sua senha?"
+    "Não tem cadastro? [Registre-se]"
   }
 }
-@enduml
+@endsalt
+```
+
+---
+
+### 5.2. Painel do Aluno
+
+```plantuml
+@startsalt
+{
+  .Janela "Conecta Monitoria - Registrar Atividades"
+  {
+    "Disciplina:" "POO"
+    "Mês Referência:" [ Setembro/2025 ]
+    "Horas Realizadas:" [ 10 ]
+    "Descrição das Atividades:"
+    [                                   ]
+    [                                   ]
+    [                                   ]
+    ( Enviar Relatório ) ( Cancelar )
+  }
+}
+@endsalt
+```
+
+## Painel do Professor - Aprovação de Relatórios
+
+```plantuml
+@startsalt
+{
+  .Janela "Conecta Monitoria - Relatórios para Aprovação"
+  {
+    "Vaga: **POO** | Monitor: [Nome do Monitor]"
+    "Relatórios Pendentes:"
+    +------------------------------------------------+
+    | Mês: **Setembro/2025** | Horas: 10              |
+    | Descrição: [Ver Detalhes]                      |
+    | ( Aprovar ) ( Reprovar )                       |
+    |------------------------------------------------|
+    | Mês: **Agosto/2025** | Horas: 15              |
+    | Descrição: [Ver Detalhes]                      |
+    | ( Aprovar ) ( Reprovar )                       |
+    +------------------------------------------------+
+    "Relatórios Aprovados (Últimos 3 meses):"
+    +------------------------------------------------+
+    | Mês: Julho/2025 | Horas: 20 | Status: Aprovado |
+    +------------------------------------------------+
+  }
+}
+@endsalt
