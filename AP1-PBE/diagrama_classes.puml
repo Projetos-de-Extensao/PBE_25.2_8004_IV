@@ -1,28 +1,100 @@
 @startuml
+
 title Diagrama de Classes – TA/Monitoria (somente classes e relacionamentos)
 
-class Aluno
-class Professor
-class OrganizadorCASA
-class Disciplina
-class Vaga
-class Candidatura
-class Entrevista
-class Assinatura
-class Desempenho
-class Notificacao
-class Sistema
+class Pessoa {
+  # id: UUID
+  # nome: String
+  # email: String
+  # matricula: String {unique}
+  + realizarLogin()
+  + atualizarPerfil()
+}
 
-Aluno "1" -- "0..*" Candidatura
-Disciplina "1" -- "0..*" Vaga
-Vaga "1" -- "0..*" Candidatura
-Professor "1" -- "0..*" Entrevista
-Candidatura "0..1" -- "0..*" Entrevista
-Aluno "1" -- "0..*" Assinatura
-Aluno "1" -- "0..*" Desempenho
-Disciplina "1" -- "0..*" Desempenho
-Sistema "1" .. "0..*" Notificacao
-OrganizadorCASA "1" .. "0..*" Entrevista : agenda >
-Professor "1" .. "0..*" Candidatura : aprova >
+class Aluno {
+  - curso: String
+  - periodo: int
+  - cra: Double
+}
+
+class Professor {
+  - departamento: String
+  - siape: String {unique}
+}
+
+class Coordenador {
+  - areaResponsavel: String
+}
+
+class Disciplina {
+  - codigo: String {unique}
+  - nome: String
+}
+
+class Vaga {
+  - id: UUID
+  - titulo: String
+  - descricao: String
+  - requisitos: String
+  - numVagas: int
+  - dataAbertura: Date
+  - dataEncerramento: Date
+  - status: StatusVaga
+  + publicar()
+  + encerrar()
+}
+
+class Candidatura {
+  - id: UUID
+  - dataCandidatura: DateTime
+  - status: StatusCandidatura
+  - notaFinal: Double
+  + submeter()
+  + avaliar()
+}
+
+class AtividadeMonitoria {
+  - id: UUID
+  - dataRegistro: Date
+  - horasRealizadas: int
+  - descricao: String
+  - status: StatusRelatorio
+  + enviar()
+  + aprovar()
+}
+
+enum StatusVaga {
+  RASCUNHO
+  PENDENTE_APROVACAO
+  ABERTA
+  FECHADA
+  CONCLUIDA
+}
+
+enum StatusCandidatura {
+  SUBMETIDA
+  EM_AVALIACAO
+  APROVADA
+  REPROVADA
+  DESISTENTE
+}
+
+enum StatusRelatorio {
+  PENDENTE
+  APROVADO
+  REPROVADO
+}
+
+Pessoa <|-- Aluno
+Pessoa <|-- Professor
+Pessoa <|-- Coordenador
+
+Professor "1" -- "0..*" Vaga : publica
+Vaga "1" -- "1" Disciplina : pertence a
+Coordenador "1" -- "0..*" Vaga : homologa
+Vaga "1" -- "0..*" Candidatura : recebe
+Aluno "1" -- "0..*" Candidatura : realiza
+Candidatura "1" -- "0..1" AtividadeMonitoria : pode gerar
+AtividadeMonitoria "0..*" -- "1" Professor : revisado por
 
 @enduml
