@@ -5,6 +5,7 @@
 - Ricardo França da Silva
 - Bletrano
 - Arthur Silva Azeredo
+- Victor da Conceição Coutinho
 
 ## Sobre 
 A aplicação "Monitoria" tem o objetivo fornecer... (5W2H) 
