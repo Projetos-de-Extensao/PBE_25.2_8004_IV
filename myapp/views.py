@@ -19,8 +19,26 @@ class DisciplinaViewSet(viewsets.ModelViewSet):
     serializer_class = DisciplinaSerializer
 
 class VagaViewSet(viewsets.ModelViewSet):
-    queryset = Vaga.objects.all()
     serializer_class = VagaSerializer
+
+    def get_queryset(self):
+        queryset = Vaga.objects.all()
+
+        status_vaga_param = self.request.query_params.get('status')
+        status_choices = [choice[0] for choice in Vaga.StatusVaga.choices]
+
+        if status_vaga_param and status_vaga_param.upper() in status_choices:
+            queryset = queryset.filter(status=status_vaga_param.upper())
+
+        titulo_param = self.request.query_params.get('titulo')
+        if titulo_param:
+            queryset = queryset.filter(titulo__icontains=titulo_param)
+
+        descricao_param = self.request.query_params.get('descricao')
+        if descricao_param:
+            queryset = queryset.filter(descricao__icontains=descricao_param)
+
+        return queryset
 
 class CandidaturaViewSet(viewsets.ModelViewSet):
     queryset = Candidatura.objects.all()

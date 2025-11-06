@@ -7,7 +7,7 @@ router.register(r'alunos', views.AlunoViewSet)
 router.register(r'professores', views.ProfessorViewSet)
 router.register(r'coordenadores', views.CoordenadorViewSet)
 router.register(r'disciplinas', views.DisciplinaViewSet)
-router.register(r'vagas', views.VagaViewSet)
+router.register(r'vagas', views.VagaViewSet, basename='vaga')
 router.register(r'candidaturas', views.CandidaturaViewSet)
 router.register(r'atividades-monitoria', views.AtividadeMonitoriaViewSet)
 
